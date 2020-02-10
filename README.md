@@ -51,9 +51,20 @@ Using RDD's calculate the count for each tuple crated above to get the total cou
      .filter(lambda x: x[0][0] != 'nolibrary') \
      .reduceByKey(lambda n,m: n+m)`
      
- Store the final spark dataframe in PostgreSQL by setting up the connections.
+ Stored the final spark dataframe in PostgreSQL by setting up the connections.
  
  ![Library-Count-Schema](https://github.com/pjm526/Jupyter-Trends/blob/master/Figures/lib-extract.png)
  
  ### Calculating Code Modularity Metrics
+ I considered the following metrics to calculate how modular a notebook is:
+ * Functions: Calculated the number of times keyword **def** occured in a notebook in source cells.
+ * Classes: Calculated the number of times keyword **class** occured in a notebook in source cells.
+ * Comments: Calculated the number of times **"#"** and **" """ "** occured in a notebook in source cells.
+ * Lines of Code: Stripped the lines in source cells on (\n) and subtracted the number of comments from the total lines of code to get actual lines count.
+ 
+ Stored the final spark dataframe in PostgreSQL by setting up the connections.
+ 
+ ![Code-Modularity-Schema](https://github.com/pjm526/Jupyter-Trends/blob/master/Figures/code.png)
+ 
+ 
  
