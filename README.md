@@ -33,4 +33,7 @@ The dataset is a combination of the following files:
 
 ## Methodology
 
+### Data Collection:
+Parses the urls
+
 
