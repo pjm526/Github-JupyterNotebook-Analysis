@@ -67,4 +67,18 @@ Using RDD's calculate the count for each tuple crated above to get the total cou
  ![Code-Modularity-Schema](https://github.com/pjm526/Jupyter-Trends/blob/master/Figures/code.png)
  
  
+ ## Dashboard
+ ![Code-Modularity-Schema]()
+ 
+ ## Deployment
+ 
+ Calculate libraries, timestamp and total count
+ `nohup spark-submit --master spark://ec2-52-204-48-171.compute-1.amazonaws.com:7077 --packages org.postgresql:postgresql:42.2.9 --jars /usr/local/spark/jars/postgresql-42.2.9.jar final_run.py &
+`
+
+Calculate Code Modularity Metrics
+`nohup spark-submit --master spark://ec2-52-204-48-171.compute-1.amazonaws.com:7077 --packages org.postgresql:postgresql:42.2.9 --jars /usr/local/spark/jars/postgresql-42.2.9.jar code_modularity.py &
+`
+Deploying Frontend
+`sudo python3 app.py`
  
