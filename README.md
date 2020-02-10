@@ -25,3 +25,12 @@ The dataset is a combination of the following files:
 * Python3
 * [AWS CLI](https://aws.amazon.com/cli/)
 * [boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/quickstart.html#installation)
+
+## Architecture
+* [SPARK](https://blog.insightdatascience.com/simply-install-spark-cluster-mode-341843a52b88): 4 EC2 m4.large instances with (1 master 3 worker) spark cluster
+* [POSTGRESQL](https://blog.insightdatascience.com/simply-install-postgresql-58c1e4ebf252): 1 EC2 m4.large instance
+* [DASH](https://dash.plot.ly/installation): 1 EC2 t2.micro instance 
+
+## Methodology
+
+
