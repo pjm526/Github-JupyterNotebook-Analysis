@@ -39,3 +39,19 @@ Lambda Fucntion to unzip the zipped files inot ec2 instance and then write it to
 Loaded repository metadata to extract 'updated at:' timestamp.
 Extracted notebooks ids, repository ids, github user names from the csv files and hence mapped the results to respective tables. 
 
+
+### Extracting Libraries from Notebooks
+Load the .ipynb notebooks which are in json format as dictionaries to make use of dictionary look up functions to access the source cells from the notebooks.Using regex functions look for keywords "import" and "from" to retrieve the libraries.
+Extract timestamps from the repository metadata json files and attach it to each libraries.
+`total_data.append(((library,year_month_date),1))`
+Using RDD's calculate the count for each tuple crated above to get the total count.
+`df = rdd.flatMap(process_notebooks.process_each_notebook) \
+     .filter(lambda x: x[0][0] != 'nolibrary') \
+     .reduceByKey(lambda n,m: n+m)`
+     
+ Store the final spark dataframe in PostgreSQL by setting up the connections.
+ 
+ ![Library-Count-Schema](/home/root123/lib-extract.png)
+ 
+ ### Calculating Code Modularity Metrics
+ 
