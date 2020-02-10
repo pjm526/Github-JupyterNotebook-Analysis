@@ -53,7 +53,7 @@ Using RDD's calculate the count for each tuple crated above to get the total cou
      
  Store the final spark dataframe in PostgreSQL by setting up the connections.
  
- ![Library-Count-Schema](/lib-extract.png)
+ ![Library-Count-Schema](https://github.com/pjm526/Jupyter-Trends/blob/master/Figures/lib-extract.png)
  
  ### Calculating Code Modularity Metrics
  
