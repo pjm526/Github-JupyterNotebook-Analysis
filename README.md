@@ -34,6 +34,8 @@ The dataset is a combination of the following files:
 ## Methodology
 
 ### Data Collection:
-Parses the urls
-
+Parse and extract the urls available on UC San Diego Library Digital Collections into s3 buckets buy distributing the work among worker nodes as well.
+Lambda Fucntion to unzip the zipped files inot ec2 instance and then write it to the s3 bucket using `s3.put_object()`
+Loaded repository metadata to extract 'updated at:' timestamp.
+Extracted notebooks ids, repository ids, github user names from the csv files and hence mapped the results to respective tables. 
 
