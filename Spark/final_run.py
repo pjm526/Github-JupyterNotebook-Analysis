@@ -32,7 +32,7 @@ def main():
 	    .option("driver","org.postgresql.Driver") \
 	    .mode("append").save()
 
-	spark.catalog.clearCache()
+	#spark.catalog.clearCache()
 
 if __name__ == "__main__":
   
