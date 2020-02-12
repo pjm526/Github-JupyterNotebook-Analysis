@@ -1,34 +1,39 @@
 from __future__ import print_function
 from pyspark.sql import SparkSession
 from spark_processing import spark_processing
+from pyspark.sql import SparkSession,SQLContext
+from pyspark import SparkConf, SparkContext
+from pyspark.sql import Row
+import pyspark.sql.types as T
 
-def final_run():
+
+def main():
+	
+	"""
+	Function calls to perform the final batch processing and writing 
+	to the database.	
+	
+	"""
 	
 	
 	parallel_processing = spark_processing()
-	print("Converting file urls list to file urls dataframe .................................")
 	files_urls_df = parallel_processing.nb_repo_df()
-	files_urls_df.show(10)
 
-
-	# Process each notebook file to get library,timestamp,users
-	print("Sending files to process..................................")
 	processed_df = parallel_processing.NotebookMapper(files_urls_df)
-	print("Files Processed")
 	processed_df.show()
-	return processed_df
+	
+	#df_lib.show()
 
+	df_lib.write.format("jdbc") \
+	    .option("url", "jdbc:postgresql://ec2-34-196-79-237.compute-1.amazonaws.com:5432/testing") \
+	    .option("dbtable", "public.countlib") \
+	    .option("user", "ubuntu") \
+	    .option("password", "password!") \
+	    .option("driver","org.postgresql.Driver") \
+	    .mode("append").save()
 
-df = final_run()
-print("Gotcha!")
-df.show(10)
+	spark.catalog.clearCache()
 
-df.write.format("jdbc") \
-    .option("url", "jdbc:postgresql://ec2-34-196-79-237.compute-1.amazonaws.com:5432/testing") \
-    .option("dbtable", "public.mvptrial") \
-    .option("user", "ubuntu") \
-    .option("password", "password!") \
-    .option("driver","org.postgresql.Driver") \
-    .mode("append").save()
-
-
+if __name__ == "__main__":
+  
+  main()
