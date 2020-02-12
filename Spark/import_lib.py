@@ -1,4 +1,4 @@
-mport json
+import json
 import boto3
 import botocore
 import datetime
@@ -11,21 +11,12 @@ from pyspark import SparkConf, SparkContext
 class GetImportedLibraries():
 
         def get_libraries(self,nb_id,s3_res):
-                """
-                Given a filename, returns a list of modules imported by the program.
-                This program does not run the code, so import statements
-                in if/else or try/except blocks will always be included.
-                """
+
 
                 print("Inside get_libraries function!..........................................")
-        #       print("nb_id",nb_id)
-                #s3_res = boto3.resource('s3')
+
                 notebook_path = "s3a://gotcha/sample_data/data/notebooks/nb_"+ nb_id+".ipynb"
-                #notebook_path = "s3a://notebooksdata/nb_"+nb_id+".ipynb"
-                #notebook_path = notebook_path.encode("utf-8")
-                #bucket_name = "notebooksdata"
                 key = str(notebook_path)[13:]
-                #print("Key is",key)
                 file_name = "nb_"+nb_id+".ipynb"
 
                 importedItems = []
@@ -52,7 +43,7 @@ class GetImportedLibraries():
                 cell_keys = data.keys()
                                                      
 
-              if 'cells' in cell_keys:
+		if 'cells' in cell_keys:
                         for c in data['cells']:
                                 #print(c)
                                 cell_data = self.get_lib_data(c,total_length)
