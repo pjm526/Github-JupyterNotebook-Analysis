@@ -1,5 +1,6 @@
-import json
+mport json
 import boto3
+import botocore
 import datetime
 import os
 import pyspark
@@ -9,62 +10,109 @@ from pyspark import SparkConf, SparkContext
 
 class GetImportedLibraries():
 
-    def get_libraries(self,nb_id,s3_res):
-        """
-        Given a filename, returns a list of modules imported by the program.
-        This program does not run the code, so import statements
-        in if/else or try/except blocks will always be included.
-        """
+        def get_libraries(self,nb_id,s3_res):
+                """
+                Given a filename, returns a list of modules imported by the program.
+                This program does not run the code, so import statements
+                in if/else or try/except blocks will always be included.
+                """
 
-	print("Inside get_libraries function!..........................................")
-	print("nb_id",nb_id)
-	#s3_res = boto3.resource('s3')
-	notebook_path = "s3a://gotcha/sample_data/data/notebooks/nb_"+ nb_id+".ipynb"
-	#notebook_path = notebook_path.encode("utf-8")
-	bucket_name = "gotcha"
-	key = str(notebook_path)[13:]
-	print("Key is",key)
-	file_name = "nb_"+nb_id+".ipynb"
-        s3_res.Bucket(bucket_name).download_file(key,file_name)
+                print("Inside get_libraries function!..........................................")
+        #       print("nb_id",nb_id)
+                #s3_res = boto3.resource('s3')
+                notebook_path = "s3a://gotcha/sample_data/data/notebooks/nb_"+ nb_id+".ipynb"
+                #notebook_path = "s3a://notebooksdata/nb_"+nb_id+".ipynb"
+                #notebook_path = notebook_path.encode("utf-8")
+                #bucket_name = "notebooksdata"
+                key = str(notebook_path)[13:]
+                #print("Key is",key)
+                file_name = "nb_"+nb_id+".ipynb"
 
-        importedItems = []
-        
-	# Check for import statements in each line in the notebook
+                importedItems = []
+                try:
+                        s3_res.Bucket('gotcha').download_file(key,file_name)
+                except botocore.exceptions.ClientError as e:
+                        if e.response['Error']['Code'] == "404":
+                                return []
+
+                try:
+                        with open(file_name, 'r') as filedata:
+                                data1 = filedata.read()
+                        data = json.loads(data1)
+
+                except ValueError:
+                #       importedItems = []
+                        return []
+
+                total_length = []
 
 
-	with open(file_name, 'r') as pyFile:
-		for line in pyFile:
-			if line == []:
-				pass
-			else:
-		    # ignore comments
-				line = line.strip().strip(',').strip('"').strip('n').strip('\\').partition("#")[0].partition(" as ")[0].split(' ')
-		    # get libraries from 'import library1, library2,...' statements
-				print("Liness.......................")
-				if line[0] == "import":
-					for imported in line[1:]:
-						# remove commas - this doesn't check for commas if
-						# they're supposed to be there!
-						imported = imported.strip(",")
-						if "." in imported:
-							imported = imported.split('.')[0]
-						else:
-							pass
-						importedItems.append(imported)
-						
-						print(".................",importedItems)
-				# get imported libraries from 'from library import ...' statements
-				if len(line) > 2:
-					if line[0] == "from" and line[2] == "import":
-						imported = line[1]
-						if "." in imported:
-							imported = imported.split('.')[0]
-						else:
-							pass
-						importedItems.append(imported)
-						print("--------------------",importedItems)
-	print("Libraries",importedItems)
-	importedItems = list(dict.fromkeys(importedItems))
-	print("libs",importedItems)
+                if isinstance(data, dict):
+                        cell_keys = data.keys()
+                cell_keys = data.keys()
+                                                     
 
-	return importedItems
+              if 'cells' in cell_keys:
+                        for c in data['cells']:
+                                #print(c)
+                                cell_data = self.get_lib_data(c,total_length)
+                                for i in cell_data:
+                                        importedItems.append(i)
+
+                return list(set(importedItems))
+
+
+
+        def get_lib_data(self,cell,total_length):
+
+                if isinstance(cell, dict):
+                        cell_keys = cell.keys()
+                else:
+                        cell_keys = []
+
+                if 'cell_type' in cell_keys:
+                        cell_type = cell['cell_type']
+                else:
+                        cell_type = None
+
+                importedItems = []
+
+                if cell_type == 'code':
+                        #print("I am inside the code key!!!!!!!!!!!")
+                        lines_of_code = []
+                        if 'source' in cell_keys:
+                                if isinstance(cell['source'], list):
+                                        if cell['source'] == []:
+                                                pass
+                                        else:
+                                                lines_of_code = cell['source'][0].partition("#")[0].partition("as")[0].split(' ')
+                                        #print("Lines of code:------------------------------------------------",lines_of_code)
+                                elif isinstance(cell['source'], str):
+                                        lines_of_code = cell['source'].split('  ')
+                                        #print(lines_of_code)
+                        elif 'input' in cell_keys:
+                                if isinstance(cell['input'], list):
+                                        if cell['input'] == []:
+                                                pass
+                                        else:
+                                                lines_of_code = cell['input'][0].partition("#")[0].partition("as")[0].split(' ')
+                                elif isinstance(cell['input'], str):
+                                        lines_of_code = cell['input'].split(' ')
+
+                        #print(lines_of_code)
+                        total_length.append(lines_of_code)
+
+
+                        for line in total_length:
+                                #line = line.lstrip()
+
+			              if 'cells' in cell_keys:
+                        for c in data['cells']:
+                                #print(c)
+                                cell_data = self.get_lib_data(c,total_length)
+                                for i in cell_data:
+                                        importedItems.append(i)
+
+                return list(set(importedItems))
+
+
