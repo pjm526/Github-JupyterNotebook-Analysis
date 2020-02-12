@@ -12,9 +12,10 @@ class GetImportedLibraries():
 
         def get_libraries(self,nb_id,s3_res):
 
+		"""
+		Function to extract imported libraries from each notebook
 
-                print("Inside get_libraries function!..........................................")
-
+		"""
                 notebook_path = "s3a://gotcha/sample_data/data/notebooks/nb_"+ nb_id+".ipynb"
                 key = str(notebook_path)[13:]
                 file_name = "nb_"+nb_id+".ipynb"
@@ -66,8 +67,7 @@ class GetImportedLibraries():
                 else:
                         cell_type = None
 
-                importedItems = []
-
+ 
                 if cell_type == 'code':
                         #print("I am inside the code key!!!!!!!!!!!")
                         lines_of_code = []
@@ -93,17 +93,6 @@ class GetImportedLibraries():
                         #print(lines_of_code)
                         total_length.append(lines_of_code)
 
-
-                        for line in total_length:
-                                #line = line.lstrip()
-
-			              if 'cells' in cell_keys:
-                        for c in data['cells']:
-                                #print(c)
-                                cell_data = self.get_lib_data(c,total_length)
-                                for i in cell_data:
-                                        importedItems.append(i)
-
-                return list(set(importedItems))
+                return total_length
 
 
