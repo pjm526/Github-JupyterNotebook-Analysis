@@ -14,6 +14,11 @@ This tool also serves a dual purpose as recruiters can consider these recommende
 **Dataset -** The dataset is a combination of 1.25 million Jupyter Notebooks, notebook metadata json files and .csv files for summarizing and indexing the above files. The dataset was published by Design Lab at UC San Diego in July 2017.
 [Dataset Link](https://library.ucsd.edu/dc/object/bb2733859v)
 
+## Acknowledgments
+Jupyter Trends uses preliminary idea from https://github.com/gauravsm31/ActiveTools of analyizing trending lbraries.
+The project builds on the idea of analyzing trending libraries and finding relevant user base which are the github users who follows a mdular way of writing code. 
+Code Referenced for my Project: https://github.com/gauravsm31/ActiveTools/
+
 ## Pipeline
 ![Pipeline](https://github.com/pjm526/Jupyter-Trends/blob/master/Figures/pipeline.png)
 
@@ -75,6 +80,3 @@ Deploying Frontend
 
 `sudo python3 app.py`
  
-## Acknowledgments
-Jupyter Trends uses preliminary idea from https://github.com/gauravsm31/ActiveTools of analyizing trending lbraries.
-Code References: https://github.com/gauravsm31/ActiveTools/
