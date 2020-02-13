@@ -11,14 +11,7 @@ My project is an attempt to shorten this searching space by
 
 This tool also serves a dual purpose as recruiters can consider these recommended Github users as their potential future employees! 
 
-## Dataset
-Around July 2017, a team in the Design Lab at UC San Diego queried, downloaded, and analyzed publicly available Jupyter Notebooks on GitHub. According to their analysis this was about 95% of all Jupyter Notebooks available on public repositores on GitHub till date. 
-The dataset is a combination of the following files:
-* 1.25 million Jupyter Notebooks
-* Json files with metadata for each Jupyter notebook
-* Json files containing metadata for each of the nearly 200,000 public repositories with these Jupyter Notebook
-* README files for nearly 150,000 repositories containing a Jupyter Notebook and csv files summarizing and indexing the notebooks, repositories, and READMEs
-
+**Dataset -** The dataset is a combination of 1.25 million Jupyter Notebooks, notebook metadata json files and .csv files for summarizing and indexing the above files. The dataset was published by Design Lab at UC San Diego in July 2017.
 [Dataset Link](https://library.ucsd.edu/dc/object/bb2733859v)
 
 ## Requirements
