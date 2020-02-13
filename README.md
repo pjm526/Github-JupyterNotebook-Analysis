@@ -16,7 +16,7 @@ This tool also serves a dual purpose as recruiters can consider these recommende
 
 ## Acknowledgments
 Jupyter Trends uses preliminary idea from https://github.com/gauravsm31/ActiveTools of analyizing trending lbraries.
-The project builds on the idea of analyzing trending libraries and finding relevant user base which are the github users who follows a mdular way of writing code. 
+The project builds on the idea of analyzing trending libraries and finding relevant user base which are the github users who follow a modular way of writing code. 
 Code Referenced for my Project: https://github.com/gauravsm31/ActiveTools/
 
 ## Pipeline
