@@ -14,6 +14,9 @@ This tool also serves a dual purpose as recruiters can consider these recommende
 **Dataset -** The dataset is a combination of 1.25 million Jupyter Notebooks, notebook metadata json files and .csv files for summarizing and indexing the above files. The dataset was published by Design Lab at UC San Diego in July 2017.
 [Dataset Link](https://library.ucsd.edu/dc/object/bb2733859v)
 
+## Pipeline
+![Pipeline](https://github.com/pjm526/Jupyter-Trends/blob/master/Figures/lib-extract.png)
+
 ## Requirements
 * Python3
 * [AWS CLI](https://aws.amazon.com/cli/)
