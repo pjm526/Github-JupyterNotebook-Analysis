@@ -15,7 +15,7 @@ This tool also serves a dual purpose as recruiters can consider these recommende
 [Dataset Link](https://library.ucsd.edu/dc/object/bb2733859v)
 
 ## Pipeline
-![Pipeline](https://github.com/pjm526/Jupyter-Trends/blob/master/Figures/lib-extract.png)
+![Pipeline](https://github.com/pjm526/Jupyter-Trends/blob/master/Figures/pipeline.png)
 
 ## Requirements
 * Python3
