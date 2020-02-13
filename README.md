@@ -75,3 +75,6 @@ Deploying Frontend
 
 `sudo python3 app.py`
  
+## Acknowledgments
+Jupyter Trends uses preliminary idea from https://github.com/gauravsm31/ActiveTools of analyizing trending lbraries.
+Code References: https://github.com/gauravsm31/ActiveTools/
