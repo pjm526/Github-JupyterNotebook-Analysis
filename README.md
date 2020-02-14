@@ -3,11 +3,12 @@
 A data pipeline tool to analyze most popular libraries actively used in publicly available Jupyter Notebooks on Github and thereby recommend popular Github users who follow code modularity as well as have sufficient hands-on experience in these popular libraries.
 
 ## Overview
-With a massive volume of data being available to us, people are increasingly turning towards Data Science to make sense of this data and put it to effective use. Python being the most popular language these days, a wide variety of tools and libraries are available. However, budding data science fellows face the struggle of identifying which tools to use given a problem and getting access to the right resources to apply these tools in an efficient manner.
+We are often spoilt for choices and so is a programmer looking for solution on various platforms like Stackoverflow, Medium, Stackexchange only to understand the superficial functionality of the solution! 
+Many developers are often in search of understanding a practical approach for using various trending tools and libraries along with a clean and modular code base approach!
+Github is a great resource for such coders to learn what’s trending and what good coding practices are!
+In order to make this enthusiastic users base practicing code modularity accessible to everyone, I am  building on a previous Insight Fellow’s project which aggregated popular libraries used in Jupyter Notebooks to also add information on modularity of notebooks! This way new coders can see good examples of modular coding practice 
 
-My project is an attempt to shorten this searching space by 
-* Identifying the most popular tools used in various Data Science fields right from Data collection to visualizations.
-* Recommending popular users on github who use these tools in their notebooks and also follow a modular way of writing code.
+My project is an attempt to shorten the searching space by processing 1.25 million Jupyter Notebooks to identify and recommend top github users having experience in these trending libraries who actually follow modular way of writing code!
 
 This tool also serves a dual purpose as recruiters can consider these recommended Github users as their potential future employees! 
 
