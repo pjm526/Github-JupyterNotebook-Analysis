@@ -1,6 +1,6 @@
 # Jupyter Trends
 
-A data pipeline tool to analyze most popular libraries actively used in publicly available Jupyter Notebooks on Github given a problem domain and recommend popular Github users who follow code modularity as well as have sufficient hands-on experience in these popular libraries.
+A data pipeline tool to analyze most popular libraries actively used in publicly available Jupyter Notebooks on Github and thereby recommend popular Github users who follow code modularity as well as have sufficient hands-on experience in these popular libraries.
 
 ## Overview
 With a massive volume of data being available to us, people are increasingly turning towards Data Science to make sense of this data and put it to effective use. Python being the most popular language these days, a wide variety of tools and libraries are available. However, budding data science fellows face the struggle of identifying which tools to use given a problem and getting access to the right resources to apply these tools in an efficient manner.
@@ -77,5 +77,5 @@ Deploying Frontend
  
  ## Acknowledgments
 Jupyter Trends uses preliminary idea from https://github.com/gauravsm31/ActiveTools of analyizing trending lbraries.
-The project builds on the idea of analyzing trending libraries and finding relevant user base which are the github users who follow a modular way of writing code. 
+The project builds on the idea of analyzing trending libraries by identifying popular github user base who follow a modular way of writing code. 
 Code Referenced for my Project: https://github.com/gauravsm31/ActiveTools/
