@@ -8,7 +8,7 @@ Many developers are often in search of understanding a practical approach for us
 Github is a great resource for such coders to learn what’s trending and what good coding practices are!
 In order to make this enthusiastic users base practicing code modularity accessible to everyone, I am  building on a previous Insight Fellow’s project which aggregated popular libraries used in Jupyter Notebooks to also add information on modularity of notebooks! This way new coders can see good examples of modular coding practice 
 
-My project is an attempt to shorten the searching space by processing 1.25 million Jupyter Notebooks to identify and recommend top github users having experience in these trending libraries who actually follow modular way of writing code!
+**My project is an attempt to shorten the searching space by processing 1.25 million Jupyter Notebooks to identify and recommend top github users having experience in these trending libraries who actually follow modular way of writing code!**
 
 This tool also serves a dual purpose as recruiters can consider these recommended Github users as their potential future employees! 
 
