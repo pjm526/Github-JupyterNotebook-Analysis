@@ -70,11 +70,11 @@ Stored the final spark dataframe in PostgreSQL by setting up the connections.
 
 Calculate Code Modularity Metrics
 
-`nohup spark-submit --master spark://ec2-52-204-48-171.compute-1.amazonaws.com:7077 --packages org.postgresql:postgresql:42.2.9 --jars /usr/local/spark/jars/postgresql-42.2.9.jar code_modularity.py &`
+`nohup spark-submit --master spark://ec2-52-204-48-171.compute-1.amazonaws.com:7077 --packages org.postgresql:postgresql:42.2.9 --jars /usr/local/spark/jars/postgresql-42.2.9.jar notebook_metrics.py &`
 
 Deploying Frontend
 
-`sudo python3 app.py`
+`sudo python3 frontend.py`
  
  ## Acknowledgments
 Jupyter Trends uses preliminary idea from ActiveTools of analyizing trending lbraries.
