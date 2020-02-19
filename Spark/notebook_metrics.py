@@ -75,6 +75,10 @@ def code_modularity(df):
      
 
 def get_cell_data(cell,total_length):
+	
+	"""
+	Calculating the metrics for each cell
+	"""
 
         if isinstance(cell, dict):
                 cell_keys = cell.keys()
@@ -92,7 +96,7 @@ def get_cell_data(cell,total_length):
         in_multiline = False
 
         if cell_type == 'code':
-                #print("I am inside the code key!!!!!!!!!!!")
+                
                 lines_of_code = []
                 if 'source' in cell_keys:
                         if isinstance(cell['source'], list):
