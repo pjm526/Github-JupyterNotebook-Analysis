@@ -74,8 +74,7 @@ def render_content(tab):
                 ),
             ],
             style={'width': '50%', 'text-align': 'center','marginLeft': '25%','display': 'inline-block','fontWeight': 'bold','fontsize':'120%'}),
-            # ,'left': '50%','right': 'auto'
-
+         
             dcc.Graph(
                 id='graph-1-tabs',
                 figure={
@@ -97,7 +96,7 @@ def render_content(tab):
             )
         ], style={'marginLeft': '5%', 'marginRight': '5%'})
 
-	#Tab 2 to display recommended github users
+    #Tab 2 to display recommended github users
     if tab == 'tab-2':
         return html.Div([
                 html.Div([
@@ -115,7 +114,6 @@ def render_content(tab):
             
             html.Div([
                 html.Div([
-                       # html.A(children='Please click this link', id='link',href='https://dash.plot.ly', target='_blank')
                         html.H4('Code Modularity: Class'),
                         dcc.Graph(id='g1')
                     ], className="six columns"),
@@ -141,7 +139,6 @@ def render_content(tab):
             
             html.Div([
                 html.Div([
-                       # html.A(children='Please click this link', id='link',href='https://dash.plot.ly', target='_blank')
                         html.H4('Code Modularity: Functions'),
                         dcc.Graph(id='g2')
                     ], className="six columns"),
@@ -166,7 +163,7 @@ def render_content(tab):
                 ], className="row"),
 
             html.Div([
-                html.Div([ # html.A(children='Please click this link', id='link',href='https://dash.plot.ly', target='_blank')
+                html.Div([ 
                         html.H4('Code Modularity: Comments'),
                         dcc.Graph(id='g3')
                     ], className="six columns"),
@@ -225,16 +222,12 @@ def render_content(tab):
 
 def update_graph(lib):
 
-    #libs_in_category = df_lib[df_lib['Category']==lib_category]['Libraries'].values.tolist()
-    #lib = libs_in_category[0]
     qry = "select timestamp,SUM(CAST(counts AS int)) as users from countlib WHERE libraries = '" + lib + "' GROUP BY timestamp ORDER BY timestamp ASC"
     df_lib1 = pd.read_sql_query(qry,con)
  
     return {
         'data': [
         {'x': df_lib1['timestamp'], 'y': df_lib1['users'], 'type': 'line', 'name': lib},
-        #{'x': df_lib2['datetime'], 'y': df_lib2['users'], 'type': 'line', 'name': libs_in_category[1]},
-       # {'x': df_lib3['datetime'], 'y': df_lib3['users'], 'type': 'line', 'name': libs_in_category[2]}
         ],
         'layout':{
                 'xaxis':{
@@ -244,9 +237,7 @@ def update_graph(lib):
                     'title':'Users',
                     },
                     'font': dict(
-                        #family='sans-serif',
                         size=18,
-                        # color='#000'
                     ),
         }
     }
@@ -274,7 +265,7 @@ def update_figure(library):
     df1 = df1[['users','link']]
     d = df1['users'].tolist()
     print(d)
-    #columns=[{"users": i, "classes": i} for i in df1.columns]
+    
 
     qry = "select a.owner_login as users, max(a.class_count) as functions from (select owner_login, class_count from finalscores inner join libraries on libraries.nb_id = finalscores.nb_id where '" + lib + "' = ANY(libraries.libraries)) a group by a.owner_login ORDER BY 2 DESC LIMIT 5;"
     df_lib6 = pd.read_sql_query(qry,con)
@@ -283,7 +274,7 @@ def update_figure(library):
     df2['link'] = 'https://github.com/' + df2['users']
     df2 = df2[['users','link']]
     d = df2['users'].tolist()
-    print(d)
+    
 
 
     qry = "select a.owner_login as users, max(a.comment_count) as comments from (select owner_login, comment_count from finalscores inner join libraries on libraries.nb_id = finalscores.nb_id where '" + lib + "' = ANY(libraries.libraries)) a group by a.owner_login ORDER BY 2 DESC LIMIT 5;"
@@ -293,7 +284,7 @@ def update_figure(library):
     df3['link'] = 'https://github.com/' + df3['users']
     df3 = df3[['users','link']]
     d = df3['users'].tolist()
-    print(d)
+    
 
 
     qry = "select a.owner_login as users, max(a.lines_of_code) as lines from (select owner_login, lines_of_code from finalscores inner join libraries on libraries.nb_id = finalscores.nb_id where '" + lib + "' = ANY(libraries.libraries)) a group by a.owner_login ORDER BY 2 DESC LIMIT 5;"
@@ -303,9 +294,9 @@ def update_figure(library):
     df4['link'] = 'https://github.com/' + df4['users']
     df4 = df4[['link','users']]
     d = df4['users'].tolist()
-    print(d)
+    
 
-    return [#figure = go.Figure(data = go.Bar(x = df_lib5['users'],y = df_lib5['classes'], customdata = urls), layout = go.Layout(clickmode='event+select')),
+    return [
             {'data': [{'x': df_lib5['users'], 'y': df_lib5['classes'], 'type': 'bar','name': lib}],'layout':{ 'xaxis':{ 'title':'Recommended Users' }, 'yaxis':{ 'title':'Class Count'} }},\
             df1.to_dict('records'),    
             {'data': [{'x': df_lib6['users'], 'y': df_lib6['functions'], 'type': 'bar','name': lib}],'layout':{ 'xaxis':{ 'title':'Recommended Users' }, 'yaxis':{ 'title':'Function Count'} }},\
