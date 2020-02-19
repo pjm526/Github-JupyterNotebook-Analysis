@@ -2,7 +2,7 @@
 
 A data pipeline tool to analyze most popular libraries actively used in publicly available Jupyter Notebooks on Github and thereby recommend popular Github users who follow code modularity as well as have sufficient hands-on experience in these popular libraries.
 
-[SLIDES](tiny.cc/dmwyjz) 
+[SLIDES](https://docs.google.com/presentation/d/1gLqpFxtlM3bu8-8pMliZh77lBvxAC0D15Sn7sMuwj5g/edit#slide=id.g769c7b7ac6_0_45) 
 
 [DEMO](http://pipelinedata.me/)
 
