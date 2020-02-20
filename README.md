@@ -66,11 +66,11 @@ Stored the final spark dataframe in PostgreSQL by setting up the connections.
  
  Calculate libraries, timestamp and total count
  
- `nohup spark-submit --master spark://ec2-52-204-48-171.compute-1.amazonaws.com:7077 --packages org.postgresql:postgresql:42.2.9 --jars /usr/local/spark/jars/postgresql-42.2.9.jar final_run.py &`
+ `nohup spark-submit --class etl --num-executors 3 --executor-cores 6 --executor-memory 6G --master spark://ec2-52-204-48-171.compute-1.amazonaws.com:7077 --packages org.postgresql:postgresql:42.2.9 --jars /usr/local/spark/jars/postgresql-42.2.9.jar final_run.py &`
 
 Calculate Code Modularity Metrics
 
-`nohup spark-submit --master spark://ec2-52-204-48-171.compute-1.amazonaws.com:7077 --packages org.postgresql:postgresql:42.2.9 --jars /usr/local/spark/jars/postgresql-42.2.9.jar notebook_metrics.py &`
+`nohup spark-submit --class etl --num-executors 3 --executor-cores 6 --executor-memory 6G --master spark://ec2-52-204-48-171.compute-1.amazonaws.com:7077 --packages org.postgresql:postgresql:42.2.9 --jars /usr/local/spark/jars/postgresql-42.2.9.jar notebook_metrics.py &`
 
 Deploying Frontend
 
