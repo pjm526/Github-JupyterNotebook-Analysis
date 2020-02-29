@@ -8,7 +8,7 @@ A data pipeline tool to analyze most popular libraries actively used in publicly
 We are often spoilt for choices and so is a programmer looking for solution on various platforms like Stackoverflow, Medium, Stackexchange only to understand the superficial functionality of the solution! 
 Many developers are often in search of understanding a practical approach for using various trending tools and libraries along with a clean and modular code base approach!
 Github is a great resource for such coders to learn what’s trending and what good coding practices are!
-In order to make this enthusiastic users base practicing code modularity accessible to everyone, I am  building on a previous Insight Fellow’s project which aggregated popular libraries used in Jupyter Notebooks to also add information on modularity of notebooks! This way new coders can see good examples of modular coding practice 
+In order to make this enthusiastic users base practicing code modularity accessible to everyone, I am  building on project which aggregated popular libraries used in Jupyter Notebooks to also add information on modularity of notebooks! This way new coders can see good examples of modular coding practice 
 
 **My project is an attempt to shorten the searching space by processing 1.25 million Jupyter Notebooks to identify and recommend top github users having experience in these trending libraries who actually follow modular way of writing code!**
 
